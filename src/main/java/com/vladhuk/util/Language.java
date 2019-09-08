@@ -3,7 +3,7 @@ package com.vladhuk.util;
 public enum Language {
     RUSSIAN {
         public String letters() {
-            return "Π°Π±Π²Π³Π΄ΠµΡ‘Π¶Π·ΠΈΠΉΠΊΠ»ΠΌΠ½ΠΎΠΏΡ€ΡΡ‚ΡƒΡ„Ρ…Ρ†Ρ‡ΡΡ‰ΡΡ‹ΡΡΡΡ";
+            return "ΰαβγδεΈζηθικλμνξοπρςστυφχψωϊϋόύώÿ";
         }
     },
     ENGLISH {
