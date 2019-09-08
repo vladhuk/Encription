@@ -1,7 +1,7 @@
-package com.vladhuk.encription;
+package com.vladhuk.encryptionapp.encription;
 
-import com.vladhuk.encription.encryptor.CaesarEncryptor;
-import com.vladhuk.util.Language;
+import com.vladhuk.encryptionapp.encription.encryptor.CaesarEncryptor;
+import com.vladhuk.encryptionapp.util.Language;
 
 public enum Encryption {
     CAESAR {

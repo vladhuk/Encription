@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="271.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.vladhuk.controller.LauncherController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="271.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.vladhuk.encryptionapp.controller.LauncherController">
    <children>
       <TextArea fx:id="inputTextArea" layoutX="14.0" layoutY="77.0" prefHeight="113.0" prefWidth="240.0" AnchorPane.bottomAnchor="80.4" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="77.0" />
       <TextArea fx:id="outputTextArea" layoutX="346.0" layoutY="77.0" prefHeight="113.0" prefWidth="240.0" AnchorPane.bottomAnchor="80.4" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="77.0" />

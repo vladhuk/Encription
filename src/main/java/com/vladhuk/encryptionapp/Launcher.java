@@ -1,4 +1,4 @@
-package com.vladhuk;
+package com.vladhuk.encryptionapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

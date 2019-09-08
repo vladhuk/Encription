@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="crypt_main" target="1.8" />
       <module name="crypt_test" target="1.8" />
+      <module name="Encription_main" target="1.8" />
+      <module name="Encription_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

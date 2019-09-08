@@ -1,12 +1,12 @@
-package com.vladhuk.controller;
+package com.vladhuk.encryptionapp.controller;
 
-import com.vladhuk.encription.Encryption;
-import com.vladhuk.encription.Encryptor;
-import com.vladhuk.service.FileService;
-import com.vladhuk.service.PrinterService;
-import com.vladhuk.service.impl.DefaultFileService;
-import com.vladhuk.service.impl.DefaultPrinterService;
-import com.vladhuk.util.Language;
+import com.vladhuk.encryptionapp.encription.Encryption;
+import com.vladhuk.encryptionapp.encription.Encryptor;
+import com.vladhuk.encryptionapp.service.FileService;
+import com.vladhuk.encryptionapp.service.PrinterService;
+import com.vladhuk.encryptionapp.service.impl.DefaultFileService;
+import com.vladhuk.encryptionapp.service.impl.DefaultPrinterService;
+import com.vladhuk.encryptionapp.util.Language;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

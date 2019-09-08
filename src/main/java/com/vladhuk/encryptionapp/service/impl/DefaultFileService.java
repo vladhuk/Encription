@@ -1,6 +1,6 @@
-package com.vladhuk.service.impl;
+package com.vladhuk.encryptionapp.service.impl;
 
-import com.vladhuk.service.FileService;
+import com.vladhuk.encryptionapp.service.FileService;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 

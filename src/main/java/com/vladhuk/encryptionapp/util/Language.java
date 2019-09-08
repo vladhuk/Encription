@@ -1,4 +1,4 @@
-package com.vladhuk.util;
+package com.vladhuk.encryptionapp.util;
 
 import java.nio.charset.Charset;
 

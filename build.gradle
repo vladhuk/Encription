@@ -22,10 +22,10 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = 'com.vladhuk.Launcher'
+mainClassName = 'com.vladhuk.encryptionapp.Launcher'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.vladhuk.Launcher'
+        attributes 'Main-Class': 'com.vladhuk.encryptionapp.Launcher'
     }
 }

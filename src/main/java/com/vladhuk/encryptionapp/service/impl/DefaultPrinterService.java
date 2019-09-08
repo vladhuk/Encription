@@ -1,6 +1,6 @@
-package com.vladhuk.service.impl;
+package com.vladhuk.encryptionapp.service.impl;
 
-import com.vladhuk.service.PrinterService;
+import com.vladhuk.encryptionapp.service.PrinterService;
 
 import java.awt.*;
 import java.awt.print.Printable;

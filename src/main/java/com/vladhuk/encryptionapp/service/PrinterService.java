@@ -1,4 +1,4 @@
-package com.vladhuk.service;
+package com.vladhuk.encryptionapp.service;
 
 public interface PrinterService {
 

@@ -1,7 +1,7 @@
-package com.vladhuk.encription.encryptor;
+package com.vladhuk.encryptionapp.encription.encryptor;
 
-import com.vladhuk.encription.AbstractEncryptor;
-import com.vladhuk.util.Language;
+import com.vladhuk.encryptionapp.encription.AbstractEncryptor;
+import com.vladhuk.encryptionapp.util.Language;
 
 public class CaesarEncryptor extends AbstractEncryptor {
 

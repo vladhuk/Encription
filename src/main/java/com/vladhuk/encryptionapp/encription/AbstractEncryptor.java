@@ -1,4 +1,4 @@
-package com.vladhuk.encription;
+package com.vladhuk.encryptionapp.encription;
 
 public abstract class AbstractEncryptor implements Encryptor {
 

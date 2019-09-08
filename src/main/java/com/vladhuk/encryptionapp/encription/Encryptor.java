@@ -1,4 +1,4 @@
-package com.vladhuk.encription;
+package com.vladhuk.encryptionapp.encription;
 
 public interface Encryptor {
 
