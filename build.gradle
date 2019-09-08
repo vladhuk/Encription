@@ -23,3 +23,9 @@ javafx {
 }
 
 mainClassName = 'com.vladhuk.Launcher'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.vladhuk.Launcher'
+    }
+}
