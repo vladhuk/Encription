@@ -1,9 +1,11 @@
 package com.vladhuk.util;
 
+import java.nio.charset.Charset;
+
 public enum Language {
     RUSSIAN {
         public String letters() {
-            return "àáâãäå¸æçèéêëìíîïğñòóôõö÷øùúûüışÿ";
+            return new String("Ğ°Ğ±Ğ²Ğ³Ğ´ĞµÑ‘Ğ¶Ğ·Ğ¸Ğ¹ĞºĞ»Ğ¼Ğ½Ğ¾Ğ¿Ñ€ÑÑ‚ÑƒÑ„Ñ…Ñ†Ñ‡ÑˆÑ‰ÑŠÑ‹ÑŒÑÑÑ".getBytes(), Charset.forName("UTF-8"));
         }
     },
     ENGLISH {
