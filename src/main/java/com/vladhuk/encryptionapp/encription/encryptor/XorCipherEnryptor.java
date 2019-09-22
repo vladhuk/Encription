@@ -44,8 +44,8 @@ public class XorCipherEnryptor implements Encryptor {
         final StringBuilder encodedString = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) == ' ') {
-                encodedString.append(' ');
+            if (letters.indexOf(Character.toLowerCase(text.charAt(i))) == -1) {
+                encodedString.append(text.charAt(i));
                 continue;
             }
 
@@ -71,8 +71,8 @@ public class XorCipherEnryptor implements Encryptor {
         final StringBuilder decodedString = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) == ' ') {
-                decodedString.append(' ');
+            if (letters.indexOf(Character.toLowerCase(text.charAt(i))) == -1) {
+                decodedString.append(text.charAt(i));
                 continue;
             }
 

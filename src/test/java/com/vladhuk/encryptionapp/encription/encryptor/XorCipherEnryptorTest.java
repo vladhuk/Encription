@@ -11,8 +11,8 @@ public class XorCipherEnryptorTest {
     @Test
     public void encode_string_When_LanguageCorrect_Expected_CorrectResult() {
         final Encryptor encryptor = new XorCipherEnryptor(Language.ENGLISH, "bb");
-        final String text = "Az";
-        final String expectedText = "Ba";
+        final String text = "Az !";
+        final String expectedText = "Ba !";
 
         assertEquals(expectedText, encryptor.encode(text));
     }
@@ -20,8 +20,8 @@ public class XorCipherEnryptorTest {
     @Test
     public void decode_string_When_LanguageCorrect_Expected_CorrectResult() {
         final Encryptor encryptor = new XorCipherEnryptor(Language.ENGLISH, "bb");
-        final String text = "Ba";
-        final String expectedText = "Az";
+        final String text = "Ba !";
+        final String expectedText = "Az !";
 
         assertEquals(expectedText, encryptor.decode(text));
     }
