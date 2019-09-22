@@ -2,8 +2,10 @@ package com.vladhuk.encryptionapp.controller;
 
 import com.vladhuk.encryptionapp.encription.Encryption;
 import com.vladhuk.encryptionapp.encription.Encryptor;
+import com.vladhuk.encryptionapp.service.EncryptionService;
 import com.vladhuk.encryptionapp.service.FileService;
 import com.vladhuk.encryptionapp.service.PrinterService;
+import com.vladhuk.encryptionapp.service.impl.DefaultEncryptionService;
 import com.vladhuk.encryptionapp.service.impl.DefaultFileService;
 import com.vladhuk.encryptionapp.service.impl.DefaultPrinterService;
 import com.vladhuk.encryptionapp.util.Language;
@@ -42,6 +44,7 @@ public class LauncherController implements Initializable {
 
     private PrinterService printerService;
     private FileService fileService;
+    private EncryptionService encryptionService;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,6 +53,7 @@ public class LauncherController implements Initializable {
 
         this.printerService = new DefaultPrinterService();
         this.fileService = new DefaultFileService();
+        this.encryptionService = new DefaultEncryptionService();
     }
 
     private void fillComboBoxWithEnumValues(Class<?> instance, ComboBox comboBox) {
@@ -67,11 +71,12 @@ public class LauncherController implements Initializable {
         }
     }
 
-    private Encryptor getEncrypter() {
-        final Language language = languageComboBox.getValue();
-        final int key = Integer.valueOf(keyField.getText());
-
-        return encryptionComboBox.getValue().getEncryptor(language, key);
+    private Encryptor getEncryptor() {
+        return encryptionService.getEncryptor(
+                encryptionComboBox.getValue(),
+                languageComboBox.getValue(),
+                keyField.getText()
+        );
     }
 
     private Window getWindowByEvent(ActionEvent event) {
@@ -80,7 +85,7 @@ public class LauncherController implements Initializable {
 
     @FXML
     void decode(ActionEvent event) {
-        final Encryptor encryptor = getEncrypter();
+        final Encryptor encryptor = getEncryptor();
         final String decodedText = encryptor.decode(inputTextArea.getText());
 
         outputTextArea.setText(decodedText);
@@ -88,7 +93,7 @@ public class LauncherController implements Initializable {
 
     @FXML
     void encode(ActionEvent event) {
-        final Encryptor encryptor = getEncrypter();
+        final Encryptor encryptor = getEncryptor();
         final String decodedText = encryptor.encode(inputTextArea.getText());
 
         outputTextArea.setText(decodedText);
