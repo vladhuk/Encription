@@ -38,45 +38,55 @@ public class XorCipherEnryptor implements Encryptor {
     @Override
     public String encode(String text) {
         final String gamma = key.length() < text.length()
-                ? multiplyGamma(text.length())
-                : key;
+                ? multiplyGamma(text.length()).toLowerCase()
+                : key.toLowerCase();
         final String letters = language.letters();
-        final StringBuilder encryptedString = new StringBuilder();
+        final StringBuilder encodedString = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == ' ') {
-                encryptedString.append(' ');
+                encodedString.append(' ');
                 continue;
             }
 
-            final int indexOfEnryptedLetter = (letters.indexOf(text.charAt(i)) + letters.indexOf(gamma.charAt(i))) % letters.length();
-            encryptedString.append(letters.charAt(indexOfEnryptedLetter));
+            final int indexOfEncodedLetter =
+                    (letters.indexOf(Character.toLowerCase(text.charAt(i))) + letters.indexOf(gamma.charAt(i))) % letters.length();
+
+            final char encodedLetter = Character.isUpperCase(text.charAt(i))
+                    ? Character.toUpperCase(letters.charAt(indexOfEncodedLetter))
+                    : letters.charAt(indexOfEncodedLetter);
+
+            encodedString.append(encodedLetter);
         }
 
-        return encryptedString.toString();
+        return encodedString.toString();
     }
 
     @Override
     public String decode(String text) {
         final String gamma = key.length() < text.length()
-                ? multiplyGamma(text.length())
-                : key;
+                ? multiplyGamma(text.length()).toLowerCase()
+                : key.toLowerCase();
         final String letters = language.letters();
-        final StringBuilder encryptedString = new StringBuilder();
+        final StringBuilder decodedString = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == ' ') {
-                encryptedString.append(' ');
+                decodedString.append(' ');
                 continue;
             }
 
-            final int indexOfEnryptedLetter =
-                    (letters.indexOf(text.charAt(i)) - letters.indexOf(gamma.charAt(i)) + letters.length()) % letters.length();
+            final int indexOfDecodedLetter =
+                    (letters.indexOf(Character.toLowerCase(text.charAt(i))) - letters.indexOf(gamma.charAt(i)) + letters.length()) % letters.length();
 
-            encryptedString.append(letters.charAt(indexOfEnryptedLetter));
+            final char decodedLetter = Character.isUpperCase(text.charAt(i))
+                    ? Character.toUpperCase(letters.charAt(indexOfDecodedLetter))
+                    : letters.charAt(indexOfDecodedLetter);
+
+            decodedString.append(decodedLetter);
         }
 
-        return encryptedString.toString();
+        return decodedString.toString();
     }
 
     public Language getLanguage() {
