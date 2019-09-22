@@ -9,7 +9,6 @@
       <ComboBox fx:id="languageComboBox" layoutX="14.0" layoutY="25.0" prefWidth="154.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
       <Button layoutX="267.0" layoutY="107.0" mnemonicParsing="false" onAction="#encode" prefHeight="26.0" prefWidth="66.0" text="Encode" AnchorPane.topAnchor="107.0" />
       <Button layoutX="267.0" layoutY="134.0" mnemonicParsing="false" onAction="#decode" prefHeight="26.0" prefWidth="66.0" text="Decode" />
-      <TextField fx:id="keyField" layoutX="345.0" layoutY="23.0" prefHeight="26.0" prefWidth="66.0" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="23.0" />
       <Label layoutX="14.0" layoutY="5.0" text="Language" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0" />
       <Label layoutX="346.0" layoutY="5.0" text="Key" AnchorPane.leftAnchor="346.0" AnchorPane.topAnchor="5.0" />
       <Label layoutX="346.0" layoutY="56.0" text="Result" AnchorPane.rightAnchor="221.2" AnchorPane.topAnchor="56.0" />
@@ -19,5 +18,6 @@
       <ComboBox fx:id="encryptionComboBox" layoutX="178.0" layoutY="24.0" prefWidth="154.0" AnchorPane.leftAnchor="178.0" />
       <Label layoutX="178.0" layoutY="5.0" text="Encription" AnchorPane.leftAnchor="178.0" AnchorPane.topAnchor="5.0" />
       <Label layoutX="14.0" layoutY="56.0" text="Input" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="56.0" />
+      <TextArea fx:id="keyField" layoutX="431.0" layoutY="23.0" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="66.0" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="23.0" />
    </children>
 </AnchorPane>

@@ -17,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Window;
 
 import java.io.File;
@@ -40,7 +39,7 @@ public class LauncherController implements Initializable {
     private ComboBox<Encryption> encryptionComboBox;
 
     @FXML
-    private TextField keyField;
+    private TextArea keyField;
 
     private PrinterService printerService;
     private FileService fileService;

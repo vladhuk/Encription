@@ -2,6 +2,7 @@ package com.vladhuk.encryptionapp.service.impl;
 
 import com.vladhuk.encryptionapp.encription.Encryption;
 import com.vladhuk.encryptionapp.encription.Encryptor;
+import com.vladhuk.encryptionapp.encription.encryptor.BookCipherEncryptor;
 import com.vladhuk.encryptionapp.encription.encryptor.CaesarEncryptor;
 import com.vladhuk.encryptionapp.encription.encryptor.XorCipherEnryptor;
 import com.vladhuk.encryptionapp.service.EncryptionService;
@@ -14,6 +15,7 @@ public class DefaultEncryptionService implements EncryptionService {
         switch (encryption) {
             case CAESAR: return new CaesarEncryptor(language, Integer.valueOf(key));
             case XOR: return new XorCipherEnryptor(language, key);
+            case BOOK: return new BookCipherEncryptor(key, 10);
             default: throw new IllegalArgumentException("No encryptors");
         }
     }
