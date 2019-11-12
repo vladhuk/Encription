@@ -64,10 +64,6 @@ public class BagEncyptor implements Encryptor {
                 .collect(Collectors.toList());
     }
 
-    private List<Integer> getIntegersFromString(String string) {
-        return getIntegersFromString(string, "");
-    }
-
     private String getStringFromIntegers(List<Integer> integers, String delimiter) {
         return integers
                 .stream()
@@ -75,17 +71,13 @@ public class BagEncyptor implements Encryptor {
                 .collect(Collectors.joining(delimiter));
     }
 
-    private String getStringFromIntegers(List<Integer> integers) {
-        return getStringFromIntegers(integers, " ");
-    }
-
     private String getBinaryText(String text) {
         final String letters = language.letters();
         final String zeroString = new String(new char[secretKey.size()]).replaceAll("\0", "0");
         return Stream.of(text.toLowerCase().split(""))
                 .map(symbol -> {
-                    final int index = letters.indexOf(symbol);
-                    final String binary = index == -1 ? "0" : Integer.toBinaryString(index);
+                    final int index = letters.indexOf(symbol) + 1;
+                    final String binary = Integer.toBinaryString(index);
                     return zeroString.substring(0, zeroString.length() - binary.length()) + binary;
                 })
                 .collect(Collectors.joining());
@@ -94,14 +86,14 @@ public class BagEncyptor implements Encryptor {
     @Override
     public String encode(String text) {
         if (text.isEmpty()) {
-            return getStringFromIntegers(getOpenKey());
+            return getStringFromIntegers(getOpenKey(), " ");
         }
 
         final String binaryText = getBinaryText(text);
-        final String fullBinaryText = appendZeros(binaryText, secretKey.size());
-        final List<Integer> fullBinaryTextIntegers = getIntegersFromString(fullBinaryText);
+//        final String fullBinaryText = appendZeros(binaryText, secretKey.size());
+        final List<Integer> fullBinaryTextIntegers = getIntegersFromString(binaryText, "");
 
-        return getStringFromIntegers(encode(fullBinaryTextIntegers));
+        return getStringFromIntegers(encode(fullBinaryTextIntegers), " ");
     }
 
     private String appendZeros(String string, int finalSize) {
@@ -122,13 +114,14 @@ public class BagEncyptor implements Encryptor {
             }
             sum += binaryText.get(i) * secretKey.get(i % secretKey.size());
         }
+        encodedTextIntegers.add(sum);
         return encodedTextIntegers;
     }
 
     @Override
     public String decode(String text) {
         if (text.isEmpty()) {
-            return getStringFromIntegers(getOpenKey());
+            return getStringFromIntegers(getOpenKey(), " ");
         }
 
         final List<Integer> encodedText = getIntegersFromString(text, " ");
@@ -137,34 +130,42 @@ public class BagEncyptor implements Encryptor {
 
         encodedText
                 .stream()
-                .map(i -> (i * getInverseR() % getQ()))
+                .map(i -> (i * getInverseR()) % getQ())
                 .map(this::decodeToBinary)
-                .map(str -> Integer.parseInt(str, 2))
-                .map(letters::charAt)
+                .map(str -> str.isEmpty() ? -1 : Integer.parseInt(str, 2))
+                .map(i -> i == -1 ? ' ' : letters.charAt(i - 1))
                 .forEach(c -> decodedText.append((char) c));
 
         return decodedText.toString();
     }
 
     private String decodeToBinary(int i) {
-        int[] binaryArr = new int[secretKey.size()];
-        Arrays.fill(binaryArr, 0);
-        final List<Integer> binary = new ArrayList(Arrays.asList(binaryArr));
-
-        final List<Integer> secretKeyCopy = new ArrayList<>();
-        Collections.copy(secretKeyCopy, secretKey);
-
-        int max = getMax(secretKeyCopy);
-        while (max > i) {
-            secretKeyCopy.remove(max);
-            max = getMax(secretKeyCopy);
+        if (i == 0) {
+            return "";
         }
 
-        return null;
+        final List<Integer> binary = new ArrayList<>(Collections.nCopies(secretKey.size(), 0));
+
+        List<Integer> secretKeyCopy;
+
+        int max;
+        do {
+            secretKeyCopy = new ArrayList<>(secretKey);
+            int indexOfMax;
+            do {
+                max = getMax(secretKeyCopy);
+                indexOfMax = secretKeyCopy.indexOf(max);
+                secretKeyCopy.set(indexOfMax, -1);
+            } while (max > i);
+            binary.set(indexOfMax, 1);
+            i -= max;
+        } while (i > 0 && max != -1);
+
+        return getStringFromIntegers(binary, "");
     }
 
     private int getMax(List<Integer> numbers) {
-        return secretKey.stream().mapToInt(n -> n).max().getAsInt();
+        return numbers.stream().mapToInt(n -> n).max().getAsInt();
     }
 
     @Override
