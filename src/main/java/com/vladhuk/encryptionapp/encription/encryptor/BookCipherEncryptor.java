@@ -64,8 +64,7 @@ public class BookCipherEncryptor implements Encryptor {
     public String decode(String text) {
         final StringBuilder result = new StringBuilder();
 
-        final List<String> fractions = Arrays.asList(text.split(nonFractionPattern))
-                .stream()
+        final List<String> fractions = Arrays.stream(text.split(nonFractionPattern))
                 .filter(fraction -> !fraction.equals(""))
                 .collect(Collectors.toList());
 
@@ -79,22 +78,11 @@ public class BookCipherEncryptor implements Encryptor {
 
     public char decodeFromFraction(String fraction) {
         final char[][] table = poemToTable();
-        final List<Integer> numbersInFraction = Arrays.asList(fraction.split("/"))
-                .stream()
+        final List<Integer> numbersInFraction = Arrays.stream(fraction.split("/"))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
 
         return table[numbersInFraction.get(0) - 1][numbersInFraction.get(1) - 1];
-    }
-
-    @Override
-    public char encode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public char decode(char symbol) {
-        throw new UnsupportedOperationException();
     }
 
     public String getPoem() {

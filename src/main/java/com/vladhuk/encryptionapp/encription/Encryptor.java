@@ -6,8 +6,4 @@ public interface Encryptor {
 
     String decode(String text);
 
-    char encode(char symbol);
-
-    char decode(char symbol);
-
 }

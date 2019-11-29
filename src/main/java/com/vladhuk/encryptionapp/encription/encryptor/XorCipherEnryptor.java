@@ -15,16 +15,6 @@ public class XorCipherEnryptor implements Encryptor {
         this.key = key;
     }
 
-    @Override
-    public char encode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public char decode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
     private String multiplyGamma(int finalLength) {
         final StringBuilder result = new StringBuilder(key);
 

@@ -168,14 +168,4 @@ public class BagEncyptor implements Encryptor {
         return numbers.stream().mapToInt(n -> n).max().getAsInt();
     }
 
-    @Override
-    public char encode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public char decode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
 }

@@ -1,9 +1,9 @@
 package com.vladhuk.encryptionapp.encription.encryptor;
 
-import com.vladhuk.encryptionapp.encription.AbstractEncryptor;
+import com.vladhuk.encryptionapp.encription.Encryptor;
 import com.vladhuk.encryptionapp.util.Language;
 
-public class CaesarEncryptor extends AbstractEncryptor {
+public class CaesarEncryptor implements Encryptor {
 
     private Language language;
 
@@ -31,7 +31,30 @@ public class CaesarEncryptor extends AbstractEncryptor {
     }
 
     @Override
-    public char encode(char symbol) {
+    public String encode(String text) {
+        final StringBuilder result = new StringBuilder();
+
+        text
+                .chars()
+                .map(letter -> encode((char) letter))
+                .forEach(letter -> result.append((char) letter));
+
+        return result.toString();
+    }
+
+    @Override
+    public String decode(String text) {
+        final StringBuilder result = new StringBuilder();
+
+        text
+                .chars()
+                .map(letter -> decode((char) letter))
+                .forEach(letter -> result.append((char) letter));
+
+        return result.toString();
+    }
+
+    private char encode(char symbol) {
         final String alphabet = language.letters();
         final char lowerCaseSymbol = Character.toLowerCase(symbol);
         final int indexInAlphabet = alphabet.indexOf(lowerCaseSymbol);
@@ -47,8 +70,7 @@ public class CaesarEncryptor extends AbstractEncryptor {
                 : Character.toUpperCase(encodedSymbol);
     }
 
-    @Override
-    public char decode(char symbol) {
+    private char decode(char symbol) {
         final String alphabet = language.letters();
         final char lowerCaseSymbol = Character.toLowerCase(symbol);
         final int indexInAlphabet = alphabet.indexOf(lowerCaseSymbol);

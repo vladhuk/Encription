@@ -64,16 +64,6 @@ public class DesCipherEncryptor implements Encryptor {
         }
     }
 
-    @Override
-    public char encode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public char decode(char symbol) {
-        throw new UnsupportedOperationException();
-    }
-
     public SecretKey getSecretKey() {
         return secretKey;
     }
