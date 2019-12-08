@@ -17,6 +17,7 @@ public class DefaultEncryptionService implements EncryptionService {
             case DES: return new DesCipherEncryptor(key);
             case BAG:return new BagEncyptor(language, key);
             case RSA: return new RsaEncryptor(key);
+            case SIGNATURE: return new SignatureEncryptor(key);
             default: throw new IllegalArgumentException("No encryptors");
         }
     }

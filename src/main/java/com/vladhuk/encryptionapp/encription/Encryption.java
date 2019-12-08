@@ -1,5 +1,5 @@
 package com.vladhuk.encryptionapp.encription;
 
 public enum Encryption {
-    CAESAR, XOR, BOOK, DES, BAG, RSA
+    CAESAR, XOR, BOOK, DES, BAG, RSA, SIGNATURE
 }
